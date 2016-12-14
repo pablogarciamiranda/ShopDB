@@ -13,7 +13,7 @@ var headers = [
 var db = mysql.createConnection({
     host:     'localhost',
     user:     'root',
-    password: '',
+    password: 'root',
     database: 'shop'
 });
 var cart = [];
@@ -90,10 +90,23 @@ var server = http.createServer(function (request, response) {
                     console.log('new Product');
                     console.log(JSON.stringify(product, null, 2));
 
+                    var query = "INSERT INTO products (name, quantity, price)" +
+                        " VALUES (?,?,?)";
+                    var data = [product.name, product.quantity, product.price, product.image];
+                    db.query(
+                        query, data,
+                        function (err) {
+                            if (err) {
+                                response.end("error");
+                                throw err;
+                            }
+                            response.end("Product added successfully");
 
+                        }
+                    );
                 });
-
                 break;
+
             case "/delete":
                 var body = '';
                 console.log("delete ");
