@@ -56,15 +56,28 @@ var server = http.createServer(function (request, response) {
                             console.log(JSON.stringify(rows, null, 2));
                             response.end(JSON.stringify(rows));
 
-                            cart.push({
-                                    "cartid": cartid,
-                                    "productid": rows[0].productID,
-                                    "name": rows[0].name,
-                                    "price": rows[0].price,
-                                    "image": rows[0].image,
-                                    "quantity": quantity
-                                }
-                            );
+                            var exist = false;
+                            for (i = 0; i<cart.length; i++){
+                                if (cart[i].productid  == rows[0].productID){
+                                    cart[i].quantity++;
+                                    exist = true;
+
+                                    break;}
+                            }
+                            if (!exist){
+                                query =
+                                cart.push({
+                                        "cartid": cartid,
+                                        "productid": rows[0].productID,
+                                        "name": rows[0].name,
+                                        "price": rows[0].price,
+                                        "image": rows[0].image,
+                                        "quantity": quantity
+                                    }
+                                );
+
+                            }
+
                             console.log(cart);
                             response.writeHead(200, {
                                 'Access-Control-Allow-Origin': '*'
