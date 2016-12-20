@@ -59,7 +59,7 @@ var server = http.createServer(function (request, response) {
                             var exist = false;
                             for (i = 0; i<cart.length; i++){
                                 if (cart[i].productid  == rows[0].productID){
-                                    cart[i].quantity++;
+                                    cart[i].quantity = cart[i].quantity + quantity;
                                     exist = true;
 
                                     break;}
@@ -103,8 +103,8 @@ var server = http.createServer(function (request, response) {
                     console.log('new Product');
                     console.log(JSON.stringify(product, null, 2));
 
-                    var query = "INSERT INTO products (name, quantity, price)" +
-                        " VALUES (?,?,?)";
+                    var query = "INSERT INTO products (name, quantity, price, image)" +
+                        " VALUES (?,?,?,?)";
                     var data = [product.name, product.quantity, product.price, product.image];
                     db.query(
                         query, data,
