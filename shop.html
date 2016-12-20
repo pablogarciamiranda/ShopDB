@@ -66,6 +66,9 @@
         $(document).ready(function () {
 
         });
+
+        // In general lines, all the functions below call functions inside app.js, often passing the required parameters from current web display or user input
+
         function getCart() {
             hideAll();
             $("#products").hide();
@@ -177,7 +180,7 @@
                 out += 'quantity' + i + '" id="quant' + i
                 out += '">' + '</td>';
 
-                out += '<td> <button onclick="addToCart(' + products[i].productID;
+                out += '<td> <button onclick="addToCart(' + products[i].productID;  // Calls the function to add a product to the cart, specifying its id
                 out += ",'quant" + i + "')" + '">Buy</button></td>';
                 out += "</tr>";
             }
@@ -200,8 +203,8 @@
                 out += '<td>' + cart[i].price + '</td>';
                 out += '<td> <img src="';
                 out += "images/" + cart[i].image + '" style="width:104px;height:100px;">';
-                out += '<td> <button onclick="deleteCartItem(' + cart[i].cartid;
-                out1 = ")" + '">Delete</button></td>';
+                out += '<td> <button onclick="deleteCartItem(' + cart[i].cartid;    // Calls the funciton to delete an item from the cart passing its id as parameter
+                out = ")" + '">Delete</button></td>';
                 out += out1;
                 out += '<td>' + cart[i].quantity + '</td>';
                 out += '<td>' + cart[i].price* cart[i].quantity + '</td>';
@@ -211,7 +214,7 @@
             out += "</table>";
             out += "<br>";
             out += "Total: "+total +'<br>';
-            out += '<button onclick="checkout()">Checkout</button><br>';
+            out += '<button onclick="checkout()">Checkout</button><br>';    // Calls the function that shows the checkout page
             out+='<div id="cartmessage"></div>';
             document.getElementById(name).innerHTML = out;
         }
@@ -292,15 +295,15 @@
 
     <nav>
         <ul>
-            <li> <button onclick="getProducts()"> Show Products </button></li>
+            <li> <button onclick="getProducts()"> Show Products </button></li>  // Shows the list of available products
             <li>
-                <button onclick="getCart()"> Show Cart </button></li>
+                <button onclick="getCart()"> Show Cart </button></li>           // Shows the elements in the cart
             <li>
-                <button onclick="showLogin()">Login </button></li>
+                <button onclick="showLogin()">Login </button></li>              // Displays the log-in screen
             <li>
-                <button onclick="showRegister()">Register </button></li>
+                <button onclick="showRegister()">Register </button></li>        // Shows the register form webpage
             <li>
-                <button onclick="showNewProduct()">New Product </button></li>
+                <button onclick="showNewProduct()">New Product </button></li>   // Shows the page to add a new product
 
         </ul>
     </nav>
