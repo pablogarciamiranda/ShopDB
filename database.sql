@@ -32,7 +32,7 @@ INSERT INTO Customer (name, password, address) VALUES
 CREATE TABLE Orders (
     orderID INT UNSIGNED  NOT NULL AUTO_INCREMENT,
     customerID INT UNSIGNED  NOT NULL,
-    saledate VARCHAR(40) NOT NULL,
+    saledate VARCHAR(60) NOT NULL,
     PRIMARY KEY  (orderID)
 
 );
